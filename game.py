@@ -6,6 +6,17 @@ from human_player import HumanPlayer
 from player import Player
 class Game:
 
+    def init_players(self, playing_mode: str) -> tuple[Player, Player]:
+        player1_name = input("Please enter your name: ")
+        player1 : Player = HumanPlayer(0, player1_name, 0)
+        player2 : Player
+        if playing_mode == "1":
+            player2 = COPlayer()
+        else:
+            player2_name = input("Please enter the second player name: ")
+            player2 = HumanPlayer(1,player2_name, 0)
+        return player1, player2
+
     def play(self, first_player : Player, second_player : Player) -> Player:
         current_player : Player = first_player
         dice = Dice()
