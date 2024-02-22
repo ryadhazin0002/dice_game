@@ -16,6 +16,16 @@ class Game:
             player2_name = input("Please enter the second player name: ")
             player2 = HumanPlayer(1,player2_name, 0)
         return player1, player2
+    
+    def start(self):
+        while True:
+            choice = self.display_main_menu()
+            if choice == "1":
+                playing_mode = self.display_new_game_menu()
+                players : tuple[Player, Player] = self.init_players(playing_mode)
+                winner = self.play(players[0], players[1])
+            elif choice == '3':
+                self.display_game_rules()
 
     def play(self, first_player : Player, second_player : Player) -> Player:
         current_player : Player = first_player
@@ -115,3 +125,7 @@ class Game:
         print("Decide wisely when to stop rolling and 'bank' the points to avoid losing them on a subsequent roll.")
         print()
         print("🎲 Enjoy the game!🎲")
+
+
+    def Change_player_name(self):
+        pass
