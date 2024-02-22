@@ -65,3 +65,42 @@ class Game:
        else:
            current_player = first_player
        return current_player
+
+
+
+    def display_main_menu(self):
+        print ("🎲 Welcome to Pig Dice Game 🎲")
+        print ()
+        print ("1. Start new game")
+        print ("2. Player's Highscore")
+        print ("3. Rules of the game")
+        print ("4. Change player's name")
+        return input("Your choice: ")
+
+    
+    def display_new_game_menu(self):
+        print ("1. CO-Player")
+        print ("2. Multi-Player")
+        return input("Your choice: ")
+    
+
+    def display_game_rules(self):
+        print("🎲 Pig Dice Game Rules🎲")
+        print()
+        print("🧩 Objective:🧩\nBe the first player to reach a total score of 100 points.")
+        print("Equipment: 1 standard six-sided dice")
+        print()
+        print("🕹️  Gameplay:🕹️")
+        print("1. Players take turns rolling the dice during their turn.")
+        print("2. Players take turns rolling the dice during their turn.")
+        print("3. If a player rolls a 2-6, they add that number to their turn total and can choose to either roll again or end their turn.")
+        print("4. If a player chooses to end their turn, they add the turn total to their overall score.")
+        print("5. Rolling a 1 during subsequent rolls forfeits all points gained in that turn.")
+        print()
+        print("🎊 Winning:🎊")
+        print("The first player to reach or exceed 100 points wins the game.🥇")
+        print()
+        print("🤓 Strategy:🤓")
+        print("Decide wisely when to stop rolling and 'bank' the points to avoid losing them on a subsequent roll.")
+        print()
+        print("🎲 Enjoy the game!🎲")
