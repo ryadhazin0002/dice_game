@@ -56,8 +56,15 @@ class Game:
                 players : tuple[Player, Player] = self.init_players(playing_mode)
                 self.play(players[0], players[1])
                 self.fileService.save_players(self.players)
+            elif choice == '2':
+                self.display_players_highscore()
             elif choice == '3':
                 self.display_game_rules()
+            elif choice == '4':
+                old_name = input("Enter your current name: ")
+                new_name = input("Enter your new name: ")
+                player = self.get_player(old_name)
+                self.change_player_name(new_name, player)
 
     def play(self, first_player : Player, second_player : Player):
         current_player : Player = first_player
@@ -172,3 +179,10 @@ class Game:
         print("Decide wisely when to stop rolling and 'bank' the points to avoid losing them on a subsequent roll.")
         print()
         print("🎲 Enjoy the game!🎲")
+
+    def display_players_highscore(self):
+        for player in self.players:
+            print(f"{player.name}   {player.high_scores}")
+
+    
+                
