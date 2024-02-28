@@ -42,11 +42,15 @@ class Game:
         player1_name = input("Please enter your name: ")
         player1: Player = self.add_player(player1_name)
         player2: Player
-        if playing_mode == "1":
-            player2 = COPlayer()
-        else:
-            player2_name = input("Please enter the second player name: ")
-            player2 = self.add_player(player2_name)
+
+        while True:
+            difficulty_choice = input("Choose Co-player difficulty (Easy or Hard): ").lower()
+            if difficulty_choice in ("easy", "hard"):
+                player2 = COPlayer(difficulty_choice)
+                break
+            else:
+                print("Invalid choice. Please enter 'Easy' or 'Hard'.")
+
         return player1, player2
 
     def start(self):
@@ -89,7 +93,10 @@ class Game:
                 print(f"Your current score is {round_score}")
                 print("Press 'Q' to exit")
                 print("Press 'R' to restart")
-                roll_again = current_player.take_action()
+                if isinstance(current_player, COPlayer):  # Check if current player is COPlayer
+                    roll_again = current_player.take_action(round_score)  # Pass round_score here
+                else:
+                    roll_again = input("Roll again or Hold? 'r' or 'h': ")
                 if roll_again == "r":
                     time.sleep(2)
                     continue
