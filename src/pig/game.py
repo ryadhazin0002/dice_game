@@ -21,7 +21,10 @@ class Game:
     def change_player_name(self, new_name: str, player: HumanPlayer):
         """Change player name"""
         player.name = new_name
-        self.fileService.save_players(self.players)
+        try:
+            self.fileService.save_players(self.players)
+        except FileNotFoundError:
+            print("An error occurred while trying to change player's name in the file.")
 
     def get_player(self, name: str) -> HumanPlayer | None:
         """Get player name"""
@@ -30,15 +33,20 @@ class Game:
                 return player
 
     def add_player(self, name: str) -> HumanPlayer:
+        """Add player to players list and players.txt if player is not already exsist"""
         player = self.get_player(name)
         if player is not None:
             return player
         player = HumanPlayer(random.randint(1, 500), name, 0)
-        self.fileService.add_player(player)
-        self.players.append(player)
+        try:
+            self.fileService.add_player(player)
+            self.players.append(player)
+        except FileNotFoundError:
+            print("An error occurred while trying to add new player to the file.")
         return player
 
     def init_players(self, playing_mode: str) -> tuple[Player, Player]:
+        """Players initialization"""
         player1_name = input("Please enter your name: ")
         player1: Player = self.add_player(player1_name)
         player2: Player
@@ -54,13 +62,17 @@ class Game:
         return player1, player2
 
     def start(self):
+        """The start menu"""
         while True:
             choice = self.display_main_menu()
             if choice == "1":
                 playing_mode = self.display_new_game_menu()
                 players: tuple[Player, Player] = self.init_players(playing_mode)
                 self.play(players[0], players[1])
-                self.fileService.save_players(self.players)
+                try:
+                    self.fileService.save_players(self.players)
+                except FileNotFoundError:
+                    print("An error occurred while trying to update the file.")
             elif choice == "2":
                 self.display_players_highscore()
             elif choice == "3":
@@ -77,6 +89,7 @@ class Game:
                 print()
 
     def play(self, first_player: Player, second_player: Player):
+        """Play the game"""
         current_player: Player = first_player
         dice = Dice()
         round_score = 0
@@ -93,10 +106,7 @@ class Game:
                 print(f"Your current score is {round_score}")
                 print("Press 'Q' to exit")
                 print("Press 'R' to restart")
-                if isinstance(current_player, COPlayer):  # Check if current player is COPlayer
-                    roll_again = current_player.take_action(round_score)  # Pass round_score here
-                else:
-                    roll_again = input("Roll again or Hold? 'r' or 'h': ")
+                roll_again = current_player.take_action()
                 if roll_again == "r":
                     time.sleep(2)
                     continue
@@ -163,8 +173,14 @@ class Game:
                 time.sleep(2)
                 print(f"your score is {round_score}")
                 time.sleep(1)
+    def display_dice_value_and_round_score(self, diceValue, round_score):
+        print(f"dice {diceValue}")
+        print(f"Your current score is {round_score}")
+        print("Press 'Q' to exit")
+        print("Press 'R' to restart")
 
     def change_current_player(self, current_player, first_player, second_player):
+        """Change the current player"""
         if current_player.name == first_player.name:
             current_player = second_player
         else:
@@ -172,6 +188,7 @@ class Game:
         return current_player
 
     def display_main_menu(self):
+        """Display main menu"""
         print()
         print("*******************************")
         print("🎲 Welcome to Pig Dice Game 🎲")
@@ -184,16 +201,19 @@ class Game:
         return input("Your choice: ")
 
     def display_new_game_menu(self):
+        """Display new game Menu"""
         print("1. CO-Player")
         print("2. Multi-Player")
         return input("Your choice: ")
 
     def display_co_player_level(self):
+        """Display CoPlayer level"""
         print("1. Easy")
         print("2. Hard")
         return input("Your choice: ")
 
     def display_game_rules(self):
+        """Display game rules"""
         print("🎲 Pig Dice Game Rules🎲")
         print()
         print(
@@ -235,5 +255,6 @@ class Game:
         print("🎲 Enjoy the game!🎲")
 
     def display_players_highscore(self):
+        """Display player's highscore"""
         for player in self.players:
             print(f"{player.name}   {player.high_scores}")

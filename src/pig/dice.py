@@ -101,6 +101,7 @@ class Dice:
         return current_dice_value
 
     def print_to_terminal(self, desiredValue: int):
+        """Print dice to treminal"""
         desiredFace = self.dice_faces[desiredValue]
         for row in range(len(desiredFace)):
             print(desiredFace[row])

@@ -12,4 +12,5 @@ class HumanPlayer(Player):
         self.high_scores = high_scores
 
     def take_action(self):
+        """Take action for HumanPlayer"""
         return input("Roll again or Hold? 'r' or 'h': ").rstrip()
