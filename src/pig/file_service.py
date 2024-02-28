@@ -10,6 +10,7 @@ class FileService:
     filename: str
 
     def load_players(self) -> list[HumanPlayer]:
+        """Load the players from players.txt"""
         players: list[HumanPlayer] = []
         with open(self.filename) as file:
             while True:
@@ -27,6 +28,7 @@ class FileService:
             return players
 
     def save_players(self, players: list[HumanPlayer]):
+        """Save the players in players.txt"""
         with open(self.filename, "w") as file:
             for player in players:
                 file.write(
@@ -35,5 +37,6 @@ class FileService:
                 )
 
     def add_player(self, player: HumanPlayer):
+        """Add new Player to players.txt"""
         with open(self.filename, "a") as file:
             file.write(f"{player.id}:{player.name}:\n")

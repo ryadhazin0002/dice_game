@@ -12,4 +12,5 @@ class Player(ABC):
 
     @abstractmethod
     def take_action(self):
+        """"Abstract take action method"""
         pass
