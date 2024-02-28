@@ -57,11 +57,11 @@ class Game:
                 players: tuple[Player, Player] = self.init_players(playing_mode)
                 self.play(players[0], players[1])
                 self.fileService.save_players(self.players)
-            elif choice == '2':
+            elif choice == "2":
                 self.display_players_highscore()
-            elif choice == '3':
+            elif choice == "3":
                 self.display_game_rules()
-            elif choice == '4':
+            elif choice == "4":
                 old_name = input("Enter your current name: ")
                 new_name = input("Enter your new name: ")
                 player = self.get_player(old_name)
@@ -85,7 +85,7 @@ class Game:
             dice.print_to_terminal(diceValue)
             if diceValue != 1:
                 round_score += diceValue
-                print(f"dice {diceValue}")               
+                print(f"dice {diceValue}")
                 print(f"Your current score is {round_score}")
                 print("Press 'Q' to exit")
                 print("Press 'R' to restart")
@@ -95,8 +95,10 @@ class Game:
                     continue
                 elif roll_again == "h":
                     current_player.total_score = round_score
-                    print(f"{current_player.name}'s total"
-                          f" score is {current_player.total_score}")
+                    print(
+                        f"{current_player.name}'s total"
+                        f" score is {current_player.total_score}"
+                    )
                     if max(first_player.total_score, second_player.total_score) >= 100:
                         winner: Player
                         if first_player.total_score > second_player.total_score:
@@ -115,16 +117,20 @@ class Game:
                         if isinstance(winner, HumanPlayer):
                             winner.high_scores.append(str(winner.total_score))
                         break
-                    print("***************************************************"
-                          "*******************")
+                    print(
+                        "***************************************************"
+                        "*******************"
+                    )
                     time.sleep(2)
-                    current_player = self.change_current_player(current_player, first_player, second_player)
+                    current_player = self.change_current_player(
+                        current_player, first_player, second_player
+                    )
                     round_score = current_player.total_score
                     print(f"🔥🔥🔥 {current_player.name} turn 🔥🔥🔥")
                     time.sleep(2)
                     continue
                 elif roll_again == "CHEAT":
-                    current_player.total_score +=90
+                    current_player.total_score += 90
                     round_score += 90
                     continue
                 elif roll_again == "Q":
@@ -139,9 +145,9 @@ class Game:
                     valid_choice = input("Roll again or Hold? 'r' or 'h': ")
 
             elif diceValue == 1:
-                current_player = self.change_current_player(current_player,
-                                                            first_player,
-                                                            second_player)
+                current_player = self.change_current_player(
+                    current_player, first_player, second_player
+                )
                 round_score = current_player.total_score
                 print("You have lost your round score!!!")
                 print("******************************************************")
@@ -174,7 +180,7 @@ class Game:
         print("1. CO-Player")
         print("2. Multi-Player")
         return input("Your choice: ")
-    
+
     def display_co_player_level(self):
         print("1. Easy")
         print("2. Hard")
@@ -183,21 +189,29 @@ class Game:
     def display_game_rules(self):
         print("🎲 Pig Dice Game Rules🎲")
         print()
-        print("🧩 Objective:🧩\nBe the first player to"
-              " reach a total score of 100 points.")
+        print(
+            "🧩 Objective:🧩\nBe the first player to"
+            " reach a total score of 100 points."
+        )
         print("Equipment: 1 standard six-sided dice")
         print()
         time.sleep(1)
         print("🕹️  Gameplay:🕹️")
         print("1. Players take turns rolling the dice during their turn.")
         print("2. Players take turns rolling the dice during their turn.")
-        print("3. If a player rolls a 2-6, they add that number to their "
-              "turn total and can choose to either roll again or "
-              "end their turn.")
-        print("4. If a player chooses to end their turn, they add the turn"
-              " total to their overall score.")
-        print("5. Rolling a 1 during subsequent rolls forfeits all points"
-              " gained in that turn.")
+        print(
+            "3. If a player rolls a 2-6, they add that number to their "
+            "turn total and can choose to either roll again or "
+            "end their turn."
+        )
+        print(
+            "4. If a player chooses to end their turn, they add the turn"
+            " total to their overall score."
+        )
+        print(
+            "5. Rolling a 1 during subsequent rolls forfeits all points"
+            " gained in that turn."
+        )
         print()
         time.sleep(1)
         print("🎊 Winning:🎊")
@@ -205,12 +219,14 @@ class Game:
         print()
         time.sleep(1)
         print("🤓 Strategy:🤓")
-        print("Decide wisely when to stop rolling and 'bank' the points to "
-              "avoid losing them on a subsequent roll.")
+        print(
+            "Decide wisely when to stop rolling and 'bank' the points to "
+            "avoid losing them on a subsequent roll."
+        )
         print()
         time.sleep(1)
         print("🎲 Enjoy the game!🎲")
-        
+
     def display_players_highscore(self):
         for player in self.players:
             print(f"{player.name}   {player.high_scores}")
