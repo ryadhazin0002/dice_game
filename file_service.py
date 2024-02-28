@@ -11,7 +11,7 @@ class FileService:
 
     def load_players(self) -> list[HumanPlayer]:
         players: list[HumanPlayer] = []
-        with open (self.filename) as file:
+        with open(self.filename) as file:
             while True:
                 line = file.readline().rstrip("\n")
                 if line == "": break
@@ -24,12 +24,13 @@ class FileService:
                 player = HumanPlayer(id, name, high_score)
                 players.append(player)
             return players
-    
+
     def save_players(self, players: list[HumanPlayer]):
-        with open (self.filename, "w") as file:
+        with open(self.filename, "w") as file:
             for player in players:
-                file.write(f"{player.id}:{player.name}:{str.join(',',player.high_scores)}\n")
+                file.write(f"{player.id}:{player.name}:"
+                           f"{str.join(',',player.high_scores)}\n")
 
     def add_player(self, player: HumanPlayer):
-        with open (self.filename, "a") as file:
-                file.write(f"{player.id}:{player.name}:\n")
+        with open(self.filename, "a") as file:
+            file.write(f"{player.id}:{player.name}:\n")

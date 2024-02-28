@@ -1,7 +1,6 @@
 from player import Player
-import random
 import time
-
+import random
 
 class COPlayer(Player):
 
@@ -15,7 +14,7 @@ class COPlayer(Player):
             print("Roll")
             time.sleep(1)
         else:
-            time.sleep(1)
-            print("Hold")
-            time.sleep(1)
-        return choice 
+             time.sleep(1)
+             print("Hold")
+             time.sleep(1)
+        return choice

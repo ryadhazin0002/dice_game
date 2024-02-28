@@ -11,6 +11,7 @@ import random
 class Game:
 
     def __init__(self, players) -> None:
+        """Init for Game Class"""
         self.players = players
         pass
 
@@ -18,10 +19,12 @@ class Game:
     fileService = FileService()
 
     def change_player_name(self, new_name: str, player: HumanPlayer):
+        """Change player name"""
         player.name = new_name
         self.fileService.save_players(self.players)
 
     def get_player(self, name: str) -> HumanPlayer | None:
+        """Get player name"""
         for player in self.players:
             if name == player.name:
                 return player
@@ -63,6 +66,11 @@ class Game:
                 new_name = input("Enter your new name: ")
                 player = self.get_player(old_name)
                 self.change_player_name(new_name, player)
+            else:
+                print("invalid value!!")
+                print("Please enter 1, 2, 3 or 4")
+                time.sleep(1)
+                print()
 
     def play(self, first_player: Player, second_player: Player):
         current_player: Player = first_player
@@ -83,6 +91,7 @@ class Game:
                 print("Press 'R' to restart")
                 roll_again = current_player.take_action()
                 if roll_again == "r":
+                    time.sleep(2)
                     continue
                 elif roll_again == "h":
                     current_player.total_score = round_score
@@ -95,9 +104,9 @@ class Game:
                         elif second_player.total_score > first_player.total_score:
                             winner = second_player
                         else:
-                            print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+                            print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
                             print(f"🎉🎉🎉 DRAW !!!! 🎉🎉🎉")
-                            print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+                            print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
                             break
 
                         print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
@@ -150,7 +159,10 @@ class Game:
         return current_player
 
     def display_main_menu(self):
+        print()
+        print("*******************************")
         print("🎲 Welcome to Pig Dice Game 🎲")
+        print("*******************************")
         print()
         print("1. Start new game")
         print("2. Player's Highscore")
@@ -162,6 +174,11 @@ class Game:
         print("1. CO-Player")
         print("2. Multi-Player")
         return input("Your choice: ")
+    
+    def display_co_player_level(self):
+        print("1. Easy")
+        print("2. Hard")
+        return input("Your choice: ")
 
     def display_game_rules(self):
         print("🎲 Pig Dice Game Rules🎲")
@@ -170,6 +187,7 @@ class Game:
               " reach a total score of 100 points.")
         print("Equipment: 1 standard six-sided dice")
         print()
+        time.sleep(1)
         print("🕹️  Gameplay:🕹️")
         print("1. Players take turns rolling the dice during their turn.")
         print("2. Players take turns rolling the dice during their turn.")
@@ -181,15 +199,18 @@ class Game:
         print("5. Rolling a 1 during subsequent rolls forfeits all points"
               " gained in that turn.")
         print()
+        time.sleep(1)
         print("🎊 Winning:🎊")
         print("The first player to reach or exceed 100 points wins the game.🥇")
         print()
+        time.sleep(1)
         print("🤓 Strategy:🤓")
         print("Decide wisely when to stop rolling and 'bank' the points to "
               "avoid losing them on a subsequent roll.")
         print()
+        time.sleep(1)
         print("🎲 Enjoy the game!🎲")
-
+        
     def display_players_highscore(self):
         for player in self.players:
             print(f"{player.name}   {player.high_scores}")
