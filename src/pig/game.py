@@ -116,21 +116,14 @@ class Game:
                         elif second_player.total_score > first_player.total_score:
                             winner = second_player
                         else:
-                            print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
-                            print(f"🎉🎉🎉 DRAW !!!! 🎉🎉🎉")
-                            print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+                            self.display_draw()
                             break
 
-                        print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
-                        print(f"🎉🎉🎉 congratulations {winner.name} won 🎉🎉🎉")
-                        print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+                        self.display_congratulations(winner)
                         if isinstance(winner, HumanPlayer):
                             winner.high_scores.append(str(winner.total_score))
                         break
-                    print(
-                        "***************************************************"
-                        "*******************"
-                    )
+                    print("***************************************************")
                     time.sleep(2)
                     current_player = self.change_current_player(
                         current_player, first_player, second_player
@@ -166,6 +159,17 @@ class Game:
                 time.sleep(2)
                 print(f"your score is {round_score}")
                 time.sleep(1)
+
+    def display_draw():
+        print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+        print(f"🎉🎉🎉 DRAW !!!! 🎉🎉🎉")
+        print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+
+    def display_congratulations(self, winner: Player):
+        print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+        print(f"🎉🎉🎉 congratulations {winner.name} won 🎉🎉🎉")
+        print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+
     def display_dice_value_and_round_score(self, diceValue, round_score):
         print(f"dice {diceValue}")
         print(f"Your current score is {round_score}")
