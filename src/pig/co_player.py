@@ -3,7 +3,6 @@ from intelligence import Intelligence
 from easy_level import Easy
 
 
-
 class COPlayer(Player):
 
     def __init__(self, level: Intelligence):
@@ -12,6 +11,6 @@ class COPlayer(Player):
 
     level: Intelligence
 
-    def take_action(self, current_score : int):
+    def take_action(self, current_score: int):
         """Take action for CoPlayer"""
         return self.level.playing_logic(self.total_score, current_score)

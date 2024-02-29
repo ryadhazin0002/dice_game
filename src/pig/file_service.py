@@ -13,7 +13,7 @@ class FileService:
     def load_players(self) -> list[HumanPlayer]:
         """Load the players from players.txt"""
         if not os.path.exists(self.filename):
-          raise FileNotFoundError()
+            raise FileNotFoundError()
         players: list[HumanPlayer] = []
         with open(self.filename) as file:
             while True:
@@ -44,6 +44,6 @@ class FileService:
     def add_player(self, player: HumanPlayer):
         """Add new Player to players.txt"""
         if not os.path.exists(self.filename):
-          raise FileNotFoundError()
+            raise FileNotFoundError()
         with open(self.filename, "a") as file:
             file.write(f"{player.id}:{player.name}:\n")
