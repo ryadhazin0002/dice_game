@@ -11,6 +11,6 @@ class Player(ABC):
     total_score: int
 
     @abstractmethod
-    def take_action(self):
+    def take_action(self, current_score : int):
         """"Abstract take action method"""
         pass

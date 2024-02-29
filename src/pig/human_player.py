@@ -11,6 +11,6 @@ class HumanPlayer(Player):
         self.id = id
         self.high_scores = high_scores
 
-    def take_action(self):
+    def take_action(self, current_score: int):
         """Take action for HumanPlayer"""
         return input("Roll again or Hold? 'r' or 'h': ").rstrip()

@@ -6,6 +6,8 @@ from human_player import HumanPlayer
 from player import Player
 from file_service import FileService
 import random
+from easy_level import Easy
+from hard_level import Hard
 
 
 class Game:
@@ -37,7 +39,7 @@ class Game:
         player = self.get_player(name)
         if player is not None:
             return player
-        player = HumanPlayer(random.randint(1, 500), name, 0)
+        player = HumanPlayer(random.randint(1, 500), name, [])
         try:
             self.fileService.add_player(player)
             self.players.append(player)
@@ -51,7 +53,15 @@ class Game:
         player1: Player = self.add_player(player1_name)
         player2: Player
         if playing_mode == "1":
-            player2 = COPlayer()
+            print("1. Easy")
+            print("2. Hard")
+            level = input("Your choice: ")
+            if level == "1":
+                intelligence: Easy = Easy()
+                player2 = COPlayer(intelligence)
+            elif level == "2":
+                intelligence: Hard = Hard()
+                player2 = COPlayer(intelligence)
         else:
             player2_name = input("Please enter the second player name: ")
             player2 = self.add_player(player2_name)
@@ -88,7 +98,7 @@ class Game:
         """Play the game"""
         current_player: Player = first_player
         dice = Dice()
-        round_score = 0
+        current_player_score = 0
         print(f"🔥🔥🔥 {current_player.name} turn 🔥🔥🔥")
         while True:
             stdscr = curses.initscr()
@@ -97,14 +107,14 @@ class Game:
             diceValue = dice.roll_dice(stdscr)
             dice.print_to_terminal(diceValue)
             if diceValue != 1:
-                round_score += diceValue
-                self.display_dice_value_and_round_score(diceValue, round_score)
-                roll_again = current_player.take_action()
+                current_player_score += diceValue
+                self.display_dice_value_and_round_score(diceValue, current_player_score)
+                roll_again = current_player.take_action(current_player_score)
                 if roll_again == "r":
                     time.sleep(2)
                     continue
                 elif roll_again == "h":
-                    current_player.total_score = round_score
+                    current_player.total_score = current_player_score
                     print(
                         f"{current_player.name}'s total"
                         f" score is {current_player.total_score}"
@@ -128,20 +138,20 @@ class Game:
                     current_player = self.change_current_player(
                         current_player, first_player, second_player
                     )
-                    round_score = current_player.total_score
+                    current_player_score = current_player.total_score
                     print(f"🔥🔥🔥 {current_player.name} turn 🔥🔥🔥")
                     time.sleep(2)
                     continue
                 elif roll_again == "CHEAT":
                     current_player.total_score += 90
-                    round_score += 90
+                    current_player_score += 90
                     continue
                 elif roll_again == "Q":
                     break
                 elif roll_again == "R":
                     first_player.total_score = 0
                     second_player.total_score = 0
-                    round_score = 0
+                    current_player_score = 0
 
                 else:
                     print("invalid choice")
@@ -151,13 +161,13 @@ class Game:
                 current_player = self.change_current_player(
                     current_player, first_player, second_player
                 )
-                round_score = current_player.total_score
+                current_player_score = current_player.total_score
                 print("You have lost your round score!!!")
                 print("******************************************************")
                 time.sleep(2)
                 print(f"🔥🔥🔥 {current_player.name} turn 🔥🔥🔥")
                 time.sleep(2)
-                print(f"your score is {round_score}")
+                print(f"your score is {current_player_score}")
                 time.sleep(1)
 
     def display_draw():

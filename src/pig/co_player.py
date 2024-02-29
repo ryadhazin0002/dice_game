@@ -1,22 +1,17 @@
 from player import Player
-import time
-import random
+from intelligence import Intelligence
+from easy_level import Easy
+
 
 
 class COPlayer(Player):
 
-    def __init__(self):
+    def __init__(self, level: Intelligence):
         super().__init__("🤖", 0)
+        self.level = level
 
-    def take_action(self):
+    level: Intelligence
+
+    def take_action(self, current_score : int):
         """Take action for CoPlayer"""
-        choice = random.choice(["r", "h"])
-        if choice == "r":
-            time.sleep(1)
-            print("Roll")
-            time.sleep(1)
-        else:
-            time.sleep(1)
-            print("Hold")
-            time.sleep(1)
-        return choice
+        return self.level.playing_logic(self.total_score, current_score)
