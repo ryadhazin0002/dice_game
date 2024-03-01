@@ -1,7 +1,3 @@
-311:Ryad:187,105,103,188
-424:Musse:
-250:Shakori:
-483:Mustafa:193
-53:Ryad�:
-376:RYad:216
-478:Tester:102
+472:Ryad:194,188
+164:ryad:
+122:musse:

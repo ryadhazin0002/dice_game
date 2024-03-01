@@ -4,9 +4,9 @@ from easy_level import Easy
 
 
 class COPlayer(Player):
-
+#🤖
     def __init__(self, level: Intelligence):
-        super().__init__("🤖", 0)
+        super().__init__("CO", 0)
         self.level = level
 
     level: Intelligence

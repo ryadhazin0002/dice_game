@@ -1,4 +1,4 @@
 *.venv
-
+src/pig/doc
 
 *.pyc
