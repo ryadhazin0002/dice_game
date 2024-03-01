@@ -1,6 +1,5 @@
 from player import Player
 from intelligence import Intelligence
-from easy_level import Easy
 
 
 class COPlayer(Player):
