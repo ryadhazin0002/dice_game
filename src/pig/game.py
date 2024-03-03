@@ -89,7 +89,7 @@ class Game:
                 new_name = input("Enter your new name: ")
                 player = self.get_player(old_name)
                 self.change_player_name(new_name, player)
-            elif choice == '5':
+            elif choice == "5":
                 break
             else:
                 print("invalid value!!")
@@ -109,10 +109,10 @@ class Game:
         while True:
             diceValue = 1
             if not in_venv():
-               stdscr = curses.initscr()
-               curses.noecho()
-               curses.cbreak()
-               diceValue = dice.roll_dice(stdscr)
+                stdscr = curses.initscr()
+                curses.noecho()
+                curses.cbreak()
+                diceValue = dice.roll_dice(stdscr)
             else:
                 diceValue = random.randint(1, 6)
             dice.print_to_terminal(diceValue)
@@ -188,12 +188,11 @@ class Game:
 
     def display_draw():
         try:
-           print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
-           print(f"🎉🎉🎉 DRAW !!!! 🎉🎉🎉")
-           print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+            print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
+            print(f"🎉🎉🎉 DRAW !!!! 🎉🎉🎉")
+            print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
         except:
             print("DRAW!!!")
-        
 
     def display_congratulations(self, winner: Player):
         try:
@@ -249,45 +248,45 @@ class Game:
     def display_game_rules(self):
         """Display game rules"""
         try:
-          print("🎲 Pig Dice Game Rules🎲")
-          print()
-          print(
-              "🧩 Objective:🧩\nBe the first player to"
-              " reach a total score of 100 points."
-          )
-          print("Equipment: 1 standard six-sided dice")
-          print()
-          time.sleep(1)
-          print("🕹️  Gameplay:🕹️")
-          print("1. Players take turns rolling the dice during their turn.")
-          print("2. Players take turns rolling the dice during their turn.")
-          print(
-              "3. If a player rolls a 2-6, they add that number to their "
-              "turn total and can choose to either roll again or "
-              "end their turn."
-          )
-          print(
-              "4. If a player chooses to end their turn, they add the turn"
-              " total to their overall score."
-          )
-          print(
-              "5. Rolling a 1 during subsequent rolls forfeits all points"
-              " gained in that turn."
-          )
-          print()
-          time.sleep(1)
-          print("🎊 Winning:🎊")
-          print("The first player to reach or exceed 100 points wins the game.🥇")
-          print()
-          time.sleep(1)
-          print("🤓 Strategy:🤓")
-          print(
-              "Decide wisely when to stop rolling and 'bank' the points to "
-              "avoid losing them on a subsequent roll."
-          )
-          print()
-          time.sleep(1)
-          print("🎲 Enjoy the game!🎲")
+            print("🎲 Pig Dice Game Rules🎲")
+            print()
+            print(
+                "🧩 Objective:🧩\nBe the first player to"
+                " reach a total score of 100 points."
+            )
+            print("Equipment: 1 standard six-sided dice")
+            print()
+            time.sleep(1)
+            print("🕹️  Gameplay:🕹️")
+            print("1. Players take turns rolling the dice during their turn.")
+            print("2. Players take turns rolling the dice during their turn.")
+            print(
+                "3. If a player rolls a 2-6, they add that number to their "
+                "turn total and can choose to either roll again or "
+                "end their turn."
+            )
+            print(
+                "4. If a player chooses to end their turn, they add the turn"
+                " total to their overall score."
+            )
+            print(
+                "5. Rolling a 1 during subsequent rolls forfeits all points"
+                " gained in that turn."
+            )
+            print()
+            time.sleep(1)
+            print("🎊 Winning:🎊")
+            print("The first player to reach or exceed 100 points wins the game.🥇")
+            print()
+            time.sleep(1)
+            print("🤓 Strategy:🤓")
+            print(
+                "Decide wisely when to stop rolling and 'bank' the points to "
+                "avoid losing them on a subsequent roll."
+            )
+            print()
+            time.sleep(1)
+            print("🎲 Enjoy the game!🎲")
         except:
             print()
 

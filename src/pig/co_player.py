@@ -3,7 +3,7 @@ from intelligence import Intelligence
 
 
 class COPlayer(Player):
-#🤖
+    # 🤖
     def __init__(self, level: Intelligence):
         super().__init__("CO", 0)
         self.level = level

@@ -15,7 +15,7 @@ class FileService:
         if not os.path.exists(self.filename):
             raise FileNotFoundError()
         players: list[HumanPlayer] = []
-        with open(self.filename,encoding="utf-8") as file:
+        with open(self.filename, encoding="utf-8") as file:
             while True:
                 line = file.readline().rstrip("\n")
                 if line == "":
