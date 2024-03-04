@@ -11,6 +11,10 @@ class Player(ABC):
         self.assertEqual(self.player.name, "TestPlayer")
         self.assertEqual(self.player.total_score, 0)
         
+    def test_take_action_abstract(self):
+        with self.assertRaises(TypeError):
+            self.player.take_action(10)
+        
 
 
 if __name__ == '__main__':
