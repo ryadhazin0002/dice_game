@@ -21,6 +21,15 @@ class TestHardLevel(unittest.TestCase):
         self.assertEqual(choice, "h")
         mocked_print.assert_called_with("Hold")
         mocked_sleep.assert_called_with(1)
+        
+    @patch('builtins.print')
+    @patch('time.sleep')
+    def test_playing_logic_hold_100(self, mocked_sleep, mocked_print):
+        hard_instance = Hard()
+        choice = hard_instance.playing_logic(10, 100)
+        self.assertEqual(choice, "h")
+        mocked_print.assert_called_with("Hold")
+        mocked_sleep.assert_called_with(1)
     
 if __name__ == "__main__":
     unittest.main()
