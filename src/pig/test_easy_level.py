@@ -1,8 +1,7 @@
 import unittest
 from unittest.mock import patch
-from easy_level import Easy  # Import the Easy class
-import random
-import time
+from easy_level import Easy
+
 
 class TestEasyLevel(unittest.TestCase):
 
