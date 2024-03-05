@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from easy_level import Easy  # Import the Easy class
+from easy_level import Easy
 import random
 import time
 
