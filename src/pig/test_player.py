@@ -25,6 +25,14 @@ class TestPlayer(unittest.TestCase):
         result = player.take_action(40)
         self.assertEqual(result, "r", "Expected 'r' but got {}".format(result))
         self.assertNotEqual(result, "h", "Expected 'r' but got 'h'")
+        
+        
+    def test_concrete_player_fail(self):
+        player = ConcretePlayer("Micke", 100)
+        result = player.take_action(60)
+        self.assertEqual(result, "h", "Expected 'h' but got {}".format(result))
+        self.assertNotEqual(result, "r", "Expected 'h' but got 'r'")
+
 
 
 
