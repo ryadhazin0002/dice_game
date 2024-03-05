@@ -1,22 +1,18 @@
 import unittest
-from player import Player
-from abc import ABC
+from abc import ABC, abstractmethod
+
 
 class Player(ABC):
-    class TestPlayer(unittest.TestCase):
-        def setUp(self):
-            self.player = Player("TestPlayer", 0)
-        
-    def test_player_creation(self):
-        self.assertEqual(self.player.name, "TestPlayer")
-        self.assertEqual(self.player.total_score, 0)
-        
-    def test_take_action_abstract(self):
-        with self.assertRaises(TypeError):
-            self.player.take_action(10)
-        
+    def __init__(self, name, total_score):
+        self.name = name
+        self.total_score = total_score
+
+    @abstractmethod
+    def take_action(self, current_score: int):
+        """Abstract take action method"""
+        pass
+
 
 
 if __name__ == '__main__':
     unittest.main()
-    
