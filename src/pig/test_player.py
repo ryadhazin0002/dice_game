@@ -19,6 +19,14 @@ class ConcretePlayer(Player):
             return "r"
         else:
             return "h"
+class TestPlayer(unittest.TestCase):
+    def test_concrete_player_pass(self):
+        player = ConcretePlayer("Pelle", 100)
+        result = player.take_action(40)
+        self.assertEqual(result, "r", "Expected 'r' but got {}".format(result))
+        self.assertNotEqual(result, "h", "Expected 'r' but got 'h'")
+
+
 
 
 
