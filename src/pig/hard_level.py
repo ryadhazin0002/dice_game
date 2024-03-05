@@ -12,7 +12,7 @@ class Hard(Intelligence):
         if round_score < 9 and current_score < 100:
             choice = "r"
 
-        elif round_score >= 9:
+        elif round_score >= 9 and current_score < 100:
             choice = "h"
 
         elif current_score >= 100:
