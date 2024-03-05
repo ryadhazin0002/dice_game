@@ -26,14 +26,6 @@ class Display:
         print(f"Your current score is {round_score}")
         print("Press 'Q' to exit")
         print("Press 'R' to restart")
-
-    def change_current_player(self, current_player: Player, first_player: Player, second_player: Player):
-        """Change the current player"""
-        if current_player.name == first_player.name:
-            current_player = second_player
-        else:
-            current_player = first_player
-        return current_player
     
     def display_main_menu(self):
         """Display main menu"""

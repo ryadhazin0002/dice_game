@@ -147,7 +147,7 @@ class Game:
                         break
                     print("***************************************************")
                     time.sleep(2)
-                    current_player = self.display.change_current_player(
+                    current_player = self.change_current_player(
                         current_player, first_player, second_player
                     )
                     current_player_score = current_player.total_score
@@ -192,3 +192,11 @@ class Game:
         """Display player's highscore"""
         for player in self.players:
             print(f"{player.name}   {player.high_scores}")
+
+    def change_current_player(self, current_player: Player, first_player: Player, second_player: Player):
+        """Change the current player"""
+        if current_player.name == first_player.name:
+            current_player = second_player
+        else:
+            current_player = first_player
+        return current_player
