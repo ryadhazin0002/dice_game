@@ -32,6 +32,14 @@ class TestPlayer(unittest.TestCase):
         result = player.take_action(60)
         self.assertEqual(result, "h", "Expected 'h' but got {}".format(result))
         self.assertNotEqual(result, "r", "Expected 'h' but got 'r'")
+    
+    def test_concrete_player_edge_case(self):
+        player = ConcretePlayer("Anderas", 100)
+        result = player.take_action(50)
+        self.assertEqual(result, "h", "Expected 'h' but got {}".format(result))
+        self.assertNotEqual(result, "r", "Expected 'h' but got 'r'")
+        
+        
 
 
 
