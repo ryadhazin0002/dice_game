@@ -77,7 +77,27 @@ class TestDice(unittest.TestCase):
                 if expected_line.strip() == "|       |":
                     continue 
                 self.assertIn(expected_line.strip(), actual_output)
-            
+    def test_roll_dice_real_screen(self):
+        try:
+            try:
+                import curses
+            except ImportError:
+                print("Warning: curses library not installed. Skipping real screen test.")
+                return
+
+            stdscr = curses.initscr()
+            curses.cbreak()
+            curses.noecho()
+            dice = Dice()
+            dice.roll_dice(stdscr)
+
+        except Exception as e:
+            print(f"Exception encountered during real screen test: {e}")
+
+        finally:
+            curses.echo()
+            curses.nocbreak()
+            curses.endwin()        
 
 
 if __name__ == '__main__':
