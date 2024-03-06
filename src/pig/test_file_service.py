@@ -24,6 +24,22 @@ class TestFileService(unittest.TestCase):
         self.assertEqual(players[1].high_scores, ["150", "120"])
         self.assertTrue(os.path.exists(self.file_service.filename))
 
+    def test_save_players(self):
+        players = [
+            HumanPlayer("3", "Zakaria", ["120", "100"]),
+            HumanPlayer("4", "Merjam", ["120"])
+        ]
+        self.file_service.save_players(players)
+        loaded_players = self.file_service.load_players()
+        self.assertEqual(len(loaded_players), 2)
+        self.assertEqual(loaded_players[0].id, "3")
+        self.assertEqual(loaded_players[0].name, "Zakaria")
+        self.assertEqual(loaded_players[0].high_scores, ["120", "100"])
+        self.assertEqual(loaded_players[1].id, "4")
+        self.assertEqual(loaded_players[1].name, "Merjam")
+        self.assertEqual(loaded_players[1].high_scores, ["120"])
+        with open(self.file_service.filename) as file:
+            self.assertIn("3:Zakaria:120,100", file.read())
 
 
 if __name__ == '__main__':
