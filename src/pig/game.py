@@ -14,14 +14,15 @@ from display import Display
 
 class Game:
 
-    def __init__(self, players) -> None:
+    def __init__(self, players, delay,filename: str) -> None:
         """Init for Game Class"""
         self.players = players
+        self.fileService = FileService(filename)
+        self.delay = delay
+        self.display = Display(delay)
         pass
 
     players: list[HumanPlayer]
-    fileService = FileService()
-    display = Display()
 
     def change_player_name(self, new_name: str, player: HumanPlayer):
         """Change player name"""
@@ -60,10 +61,10 @@ class Game:
             print("2. Hard")
             level = input("Your choice: ")
             if level == "1":
-                intelligence: Easy = Easy()
+                intelligence: Easy = Easy(self.delay)
                 player2 = COPlayer(intelligence)
             elif level == "2":
-                intelligence: Hard = Hard()
+                intelligence: Hard = Hard(self.delay)
                 player2 = COPlayer(intelligence)
         else:
             player2_name = input("Please enter the second player name: ")
@@ -90,13 +91,14 @@ class Game:
                 old_name = input("Enter your current name: ")
                 new_name = input("Enter your new name: ")
                 player = self.get_player(old_name)
-                self.change_player_name(new_name, player)
+                if player is not None:
+                    self.change_player_name(new_name, player)
             elif choice == "5":
                 break
             else:
                 print("invalid value!!")
                 print("Please enter 1, 2, 3 or 4")
-                time.sleep(1)
+                time.sleep(1 * self.delay)
                 print()
 
     def play(self, first_player: Player, second_player: Player):
@@ -122,8 +124,9 @@ class Game:
                 current_player_score += diceValue
                 self.display.display_dice_value_and_round_score(diceValue, current_player_score)
                 roll_again = current_player.take_action(current_player_score)
+                print(f"Roll again is {roll_again}")
                 if roll_again == "r":
-                    time.sleep(2)
+                    time.sleep(2 * self.delay)
                     continue
                 elif roll_again == "h":
                     current_player.total_score = current_player_score
@@ -146,7 +149,7 @@ class Game:
                             winner.high_scores.append(str(winner.total_score))
                         break
                     print("***************************************************")
-                    time.sleep(2)
+                    time.sleep(2 * self.delay)
                     current_player = self.change_current_player(
                         current_player, first_player, second_player
                     )
@@ -155,7 +158,7 @@ class Game:
                         print(f"🔥🔥🔥 {current_player.name} turn 🔥🔥🔥")
                     except:
                         print(f" {current_player.name} turn ")
-                    time.sleep(2)
+                    time.sleep(2 * self.delay)
                     continue
                 elif roll_again == "CHEAT":
                     current_player.total_score += 90
@@ -168,30 +171,34 @@ class Game:
                     second_player.total_score = 0
                     current_player_score = 0
 
-                else:
-                    print("invalid choice")
-                    valid_choice = input("Roll again or Hold? 'r' or 'h': ")
-
             elif diceValue == 1:
-                current_player = self.display.change_current_player(
+                current_player = self.change_current_player(
                     current_player, first_player, second_player
                 )
                 current_player_score = current_player.total_score
                 print("You have lost your round score!!!")
                 print("******************************************************")
-                time.sleep(2)
+                time.sleep(2 * self.delay)
                 try:
                     print(f"🔥🔥🔥 {current_player.name} turn 🔥🔥🔥")
                 except:
                     print(f" {current_player.name} turn ")
-                time.sleep(2)
+                time.sleep(2 * self.delay)
                 print(f"your score is {current_player_score}")
-                time.sleep(1)
+                time.sleep(1 * self.delay)
 
     def display_players_highscore(self):
         """Display player's highscore"""
         for player in self.players:
-            print(f"{player.name}   {player.high_scores}")
+            high_scores = player.high_scores
+            if len(high_scores) == 0:
+                high_scores = None
+            print(f"{player.name} : ",end="")
+            if high_scores is None:
+                print(None)
+            else:
+                high_scores.sort(reverse=True)
+                print(str.join(" , ",high_scores))
 
     def change_current_player(self, current_player: Player, first_player: Player, second_player: Player):
         """Change the current player"""

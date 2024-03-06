@@ -4,8 +4,8 @@ import os
 
 class FileService:
 
-    def __init__(self) -> None:
-        self.filename = "human_players.txt"
+    def __init__(self, filename : str) -> None:
+        self.filename = filename
         pass
 
     filename: str

@@ -4,7 +4,9 @@ import time
 
 class Display:
 
-
+    def __init__(self, delay) -> None:
+        self.delay = delay
+        pass
     def display_draw(self):
         try:
             print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
@@ -67,7 +69,7 @@ class Display:
             )
             print("Equipment: 1 standard six-sided dice")
             print()
-            time.sleep(1)
+            time.sleep(1 * self.delay)
             print("🕹️  Gameplay:🕹️")
             print("1. Players take turns rolling the dice during their turn.")
             print("2. Players take turns rolling the dice during their turn.")
@@ -85,18 +87,18 @@ class Display:
                 " gained in that turn."
             )
             print()
-            time.sleep(1)
+            time.sleep(1 * self.delay)
             print("🎊 Winning:🎊")
             print("The first player to reach or exceed 100 points wins the game.🥇")
             print()
-            time.sleep(1)
+            time.sleep(1 * self.delay)
             print("🤓 Strategy:🤓")
             print(
                 "Decide wisely when to stop rolling and 'bank' the points to "
                 "avoid losing them on a subsequent roll."
             )
             print()
-            time.sleep(1)
+            time.sleep(1 * self.delay)
             print("🎲 Enjoy the game!🎲")
         except:
             print()

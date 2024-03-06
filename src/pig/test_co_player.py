@@ -8,7 +8,7 @@ import random
 class TestCOPlayer(unittest.TestCase):
 
     def test_co_player_init(self):
-        level = random.choice([Easy(), Hard()])
+        level = random.choice([Easy(0), Hard(0)])
         co_player = COPlayer(level)
 
         self.assertEqual(co_player.name, "CO")
@@ -17,7 +17,7 @@ class TestCOPlayer(unittest.TestCase):
         self.assertIsInstance(co_player, COPlayer)
 
     def test_take_action(self):
-        level = random.choice([Easy(), Hard()])
+        level = random.choice([Easy(0), Hard(0)])
         co_player = COPlayer(level)
         current_score = 10
         choice = ['r', 'h']
