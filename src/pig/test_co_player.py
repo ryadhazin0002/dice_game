@@ -16,6 +16,17 @@ class TestCOPlayer(unittest.TestCase):
         self.assertEqual(co_player.level, level)
         self.assertIsInstance(co_player, COPlayer)
 
+    def test_take_action(self):
+        level = random.choice([Easy(), Hard()])
+        co_player = COPlayer(level)
+        current_score = 10
+        choice = ['r', 'h']
+        result = co_player.take_action(current_score)
+        self.assertIn(result, choice)
+        self.assertIsInstance(result, str)
+        self.assertIsNotNone(result, None)
+        
+
     
         
 
