@@ -41,6 +41,16 @@ class TestFileService(unittest.TestCase):
         with open(self.file_service.filename) as file:
             self.assertIn("3:Zakaria:120,100", file.read())
 
+    def test_add_player(self):
+        new_player = HumanPlayer("5", "Sara", ["120", "110"])
+        self.file_service.add_player(new_player)
+        loaded_players = self.file_service.load_players()
+        self.assertEqual(len(loaded_players), 3)
+        self.assertEqual(loaded_players[2].id, "5")
+        self.assertEqual(loaded_players[2].name, "Sara")
+        self.assertEqual(loaded_players[2].high_scores, [])
+        with open(self.file_service.filename) as file:
+            self.assertIn("5:Sara:", file.read())
 
 if __name__ == '__main__':
     unittest.main()
