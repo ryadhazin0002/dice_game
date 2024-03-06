@@ -33,6 +33,29 @@ class TestDice(unittest.TestCase):
             curses.echo()
             curses.nocbreak()
             curses.endwin()
+    @patch('random.randint')
+    def test_roll_dice(self, mock_randint):
+        dice = Dice()
+        try:
+            import curses  
+        except ImportError:
+            print("Warning: curses library not installed. Skipping real screen test.")
+            return
+
+        mock_randint.return_value = 3
+
+        try:
+            stdscr = curses.initscr()
+            curses.cbreak()
+            curses.noecho()
+
+            rolled_value = dice.roll_dice(stdscr)
+            self.assertEqual(rolled_value, 3)
+
+        finally:
+            curses.echo()
+            curses.nocbreak()
+            curses.endwin()
 
 
 if __name__ == '__main__':
