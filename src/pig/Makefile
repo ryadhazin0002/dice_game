@@ -80,11 +80,11 @@ codestyle: black
 #
 unittest:
 	@$(call MESSAGE,$@)
-	 $(PYTHON) -m unittest discover
+	 $(PYTHON) -m unittest discover -s ./tests
 
 coverage:
 	@$(call MESSAGE,$@)
-	coverage run -m unittest discover
+	coverage run -m unittest discover -s ./tests
 	coverage html
 	coverage report -m
 
@@ -110,13 +110,14 @@ pyreverse:
 	@$(call MESSAGE,$@)
 	install -d doc/pyreverse
 	pyreverse *.py -o html -d doc/pyreverse
-#pyreverse *.py -o html -p . -A -my -d ./uml
 # ---------------------------------------------------
 #	ot -Thtml classes.dot -o doc/pyreverse/classes.html
 #	ot -Thtml packages.dot -o doc/pyreverse/packages.html
 #	m -f classes.dot packages.dot
 
-doc: pdoc pyreverse #pydoc sphinx
+doc: pdoc pyreverse
+
+uml: pdoc pyreverse
 
 
 

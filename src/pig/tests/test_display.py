@@ -23,22 +23,22 @@ class TestDisplay(unittest.TestCase):
 
         output = capturedOutput.getvalue()
         self.assertEqual("DRAW" in output, True)
-        self.assertEqual(output.count('\n'), 3)
+        self.assertEqual(output.count("\n"), 3)
 
     def test_congratulations(self):
         capturedOutput = io.StringIO()
         sys.stdout = capturedOutput
 
-        self.display.display_congratulations(HumanPlayer("0","Winner",[]))
+        self.display.display_congratulations(HumanPlayer("0", "Winner", []))
 
         sys.stdout = sys.__stdout__
 
         output = capturedOutput.getvalue()
         self.assertEqual("congratulations" in output, True)
-        self.assertEqual(output.count('\n'), 3)
+        self.assertEqual(output.count("\n"), 3)
 
-    @patch('builtins.input', side_effect=["1"])
-    def test_co_player_level(self,mock_input):
+    @patch("builtins.input", side_effect=["1"])
+    def test_co_player_level(self, mock_input):
         capturedOutput = io.StringIO()
         sys.stdout = capturedOutput
 
@@ -49,7 +49,7 @@ class TestDisplay(unittest.TestCase):
         output = capturedOutput.getvalue()
         self.assertEqual("1. Easy" in output, True)
         self.assertEqual("2. Hard" in output, True)
-        self.assertEqual(output.count('\n'), 2)
+        self.assertEqual(output.count("\n"), 2)
 
     def test_rules(self):
         capturedOutput = io.StringIO()
@@ -58,10 +58,9 @@ class TestDisplay(unittest.TestCase):
         self.display.display_game_rules()
 
         sys.stdout = sys.__stdout__
-
         output = capturedOutput.getvalue()
         self.assertEqual("Pig Dice Game Rules" in output, True)
         self.assertEqual("Gameplay" in output, True)
         self.assertEqual("Winning" in output, True)
         self.assertEqual("Strategy" in output, True)
-        self.assertEqual(output.count('\n'), 20)
+        self.assertEqual(output.count("\n"), 20)

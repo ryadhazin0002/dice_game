@@ -64,9 +64,9 @@ class Dice:
 
         try:
             for row in range(len(self.dice_faces[face_value])):
-                if not in_venv(): # pragma: no cover
-                  stdscr.addstr(y + row, x, self.dice_faces[face_value][row])
-        except: # pragma: no cover
+                if not in_venv():  # pragma: no cover
+                    stdscr.addstr(y + row, x, self.dice_faces[face_value][row])
+        except:  # pragma: no cover
             pass
 
     def roll_dice(self, stdscr) -> int:
@@ -78,7 +78,7 @@ class Dice:
                 current_roll += 1
                 # Clear the screen
                 if not in_venv():
-                  stdscr.clear()
+                    stdscr.clear()
 
                 # Roll the dice
                 current_dice_value = random.randint(1, 6)
@@ -86,7 +86,7 @@ class Dice:
                 # Draw the dice face
                 self.draw_dice_face(stdscr, 20, 10, current_dice_value)
                 if not in_venv():
-                   stdscr.refresh()
+                    stdscr.refresh()
 
                 # Wait 2 seconds
                 time.sleep(0.25 * self.delay)
@@ -94,17 +94,17 @@ class Dice:
                 # Clear the dice drawing for next roll
                 try:
                     for row in range(5):
-                        if not in_venv(): # pragma: no cover
-                           stdscr.addstr(10 + row, 20, " " * 9)
-                except: # pragma: no cover
+                        if not in_venv():  # pragma: no cover
+                            stdscr.addstr(10 + row, 20, " " * 9)
+                except:  # pragma: no cover
                     pass
-        except KeyboardInterrupt: # pragma: no cover
+        except KeyboardInterrupt:  # pragma: no cover
             pass
-        finally: # pragma: no cover
+        finally:  # pragma: no cover
             if not in_venv():
-               curses.echo()
-               curses.nocbreak()
-               curses.endwin()
+                curses.echo()
+                curses.nocbreak()
+                curses.endwin()
 
         return current_dice_value
 

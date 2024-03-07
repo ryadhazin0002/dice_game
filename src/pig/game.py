@@ -14,7 +14,7 @@ from display import Display
 
 class Game:
 
-    def __init__(self, players, delay,filename: str) -> None:
+    def __init__(self, players, delay, filename: str) -> None:
         """Init for Game Class"""
         self.players = players
         self.fileService = FileService(filename)
@@ -122,7 +122,9 @@ class Game:
             dice.print_to_terminal(diceValue)
             if diceValue != 1:
                 current_player_score += diceValue
-                self.display.display_dice_value_and_round_score(diceValue, current_player_score)
+                self.display.display_dice_value_and_round_score(
+                    diceValue, current_player_score
+                )
                 roll_again = current_player.take_action(current_player_score)
                 print(f"Roll again is {roll_again}")
                 if roll_again == "r":
@@ -193,14 +195,16 @@ class Game:
             high_scores = player.high_scores
             if len(high_scores) == 0:
                 high_scores = None
-            print(f"{player.name} : ",end="")
+            print(f"{player.name} : ", end="")
             if high_scores is None:
                 print(None)
             else:
                 high_scores.sort(reverse=True)
-                print(str.join(" , ",high_scores))
+                print(str.join(" , ", high_scores))
 
-    def change_current_player(self, current_player: Player, first_player: Player, second_player: Player):
+    def change_current_player(
+        self, current_player: Player, first_player: Player, second_player: Player
+    ):
         """Change the current player"""
         if current_player.name == first_player.name:
             current_player = second_player

@@ -4,7 +4,7 @@ import os
 
 class FileService:
 
-    def __init__(self, filename : str) -> None:
+    def __init__(self, filename: str) -> None:
         self.filename = filename
         pass
 

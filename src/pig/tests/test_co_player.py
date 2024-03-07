@@ -5,6 +5,7 @@ from easy_level import Easy
 from co_player import COPlayer
 import random
 
+
 class TestCOPlayer(unittest.TestCase):
 
     def test_co_player_init(self):
@@ -20,17 +21,12 @@ class TestCOPlayer(unittest.TestCase):
         level = random.choice([Easy(0), Hard(0)])
         co_player = COPlayer(level)
         current_score = 10
-        choice = ['r', 'h']
+        choice = ["r", "h"]
         result = co_player.take_action(current_score)
         self.assertIn(result, choice)
         self.assertIsInstance(result, str)
         self.assertIsNotNone(result, None)
-        
 
-    
-        
 
-    
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -7,6 +7,7 @@ class Display:
     def __init__(self, delay) -> None:
         self.delay = delay
         pass
+
     def display_draw(self):
         try:
             print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
@@ -28,7 +29,7 @@ class Display:
         print(f"Your current score is {round_score}")
         print("Press 'Q' to exit")
         print("Press 'R' to restart")
-    
+
     def display_main_menu(self):
         """Display main menu"""
         print()
@@ -45,19 +46,19 @@ class Display:
         print("4. Change player's name")
         print("5. Exit")
         return input("Your choice: ")
-    
+
     def display_new_game_menu(self):
         """Display new game Menu"""
         print("1. CO-Player")
         print("2. Multi-Player")
         return input("Your choice: ")
-    
+
     def display_co_player_level(self):
         """Display CoPlayer level"""
         print("1. Easy")
         print("2. Hard")
         return input("Your choice: ")
-    
+
     def display_game_rules(self):
         """Display game rules"""
         try:
@@ -102,5 +103,3 @@ class Display:
             print("🎲 Enjoy the game!🎲")
         except:
             print()
-
-    
