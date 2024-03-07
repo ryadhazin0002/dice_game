@@ -12,14 +12,14 @@ This Python program implements a text-based version of the Pig Dice Game, where 
 * Clone the repository to your local machine:
 
  ```bash
-git clone <https://github.com/ryadhazin0002/dice_game.git>
+git clone https://github.com/ryadhazin0002/dice_game.git
 ```
 * Ensure you have Python 3 installed.
 * Navigate to the project directory:
 ``` bash
 cd dice_game
 ```
-* Run the makefile to install dependencies and setup the invironment:
+* Run the makefile to install dependencies and setup the environment:
 ```bash
 make install
 ````
