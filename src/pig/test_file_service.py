@@ -51,6 +51,11 @@ class TestFileService(unittest.TestCase):
         self.assertEqual(loaded_players[2].high_scores, [])
         with open(self.file_service.filename) as file:
             self.assertIn("5:Sara:", file.read())
+    
+    def test_filename_not_found(self):
+        file_service = FileService("k;laskdlfkalsd")
+        with self.assertRaises(FileNotFoundError):
+            file_service.load_players()
 
 if __name__ == '__main__':
     unittest.main()

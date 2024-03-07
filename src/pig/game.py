@@ -104,7 +104,7 @@ class Game:
     def play(self, first_player: Player, second_player: Player):
         """Play the game"""
         current_player: Player = first_player
-        dice = Dice()
+        dice = Dice(self.delay)
         current_player_score = 0
         try:
             print(f"🔥🔥🔥 {current_player.name} turn 🔥🔥🔥")

@@ -13,4 +13,4 @@ class Player(ABC):
     @abstractmethod
     def take_action(self, current_score: int):
         """ "Abstract take action method"""
-        pass
+        pass # pragma: no cover
