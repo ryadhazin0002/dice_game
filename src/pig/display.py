@@ -9,6 +9,7 @@ class Display:
         pass
 
     def display_draw(self):
+        """Display DRAW"""
         try:
             print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
             print(f"🎉🎉🎉 DRAW !!!! 🎉🎉🎉")
@@ -17,6 +18,7 @@ class Display:
             print("DRAW!!!")
 
     def display_congratulations(self, winner: Player):
+        """Display Congratulations"""
         try:
             print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
             print(f"🎉🎉🎉 congratulations {winner.name} won 🎉🎉🎉")
@@ -25,6 +27,7 @@ class Display:
             print(f"congratulations {winner.name} won")
 
     def display_dice_value_and_round_score(self, diceValue, round_score):
+        """Display dice value and round score"""
         print(f"dice {diceValue}")
         print(f"Your current score is {round_score}")
         print("Press 'Q' to exit")
