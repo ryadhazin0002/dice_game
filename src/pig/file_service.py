@@ -5,6 +5,7 @@ import os
 class FileService:
 
     def __init__(self) -> None:
+        """Init for FileService class"""
         self.filename = "human_players.txt"
         pass
 

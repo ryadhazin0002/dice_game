@@ -7,6 +7,7 @@ class HumanPlayer(Player):
     high_scores: list[str]
 
     def __init__(self, id, name, high_scores):
+        """Init for HumanPlayer class"""
         super().__init__(name, 0)
         self.id = id
         self.high_scores = high_scores
