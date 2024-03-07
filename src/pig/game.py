@@ -126,7 +126,6 @@ class Game:
                     diceValue, current_player_score
                 )
                 roll_again = current_player.take_action(current_player_score)
-                print(f"Roll again is {roll_again}")
                 if roll_again == "r":
                     time.sleep(2 * self.delay)
                     continue
