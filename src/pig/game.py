@@ -143,7 +143,7 @@ class Game:
                         elif second_player.total_score > first_player.total_score:
                             winner = second_player
                         else:
-                            self.display_draw()
+                            self.display.display_draw()
                             break
 
                         self.display.display_congratulations(winner)
@@ -163,8 +163,8 @@ class Game:
                     time.sleep(2 * self.delay)
                     continue
                 elif roll_again == "CHEAT":
-                    current_player.total_score += 30
-                    current_player_score += 30
+                    current_player.total_score += 90
+                    current_player_score += 90
                     continue
                 elif roll_again == "Q":
                     break
