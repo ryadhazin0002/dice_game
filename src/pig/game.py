@@ -43,7 +43,7 @@ class Game:
         player = self.get_player(name)
         if player is not None:
             return player
-        player = HumanPlayer(random.randint(1, 500), name, [])
+        player = HumanPlayer(random.randint(1000000, 5000000), name, [])
         try:
             self.fileService.add_player(player)
             self.players.append(player)
@@ -163,8 +163,8 @@ class Game:
                     time.sleep(2 * self.delay)
                     continue
                 elif roll_again == "CHEAT":
-                    current_player.total_score += 90
-                    current_player_score += 90
+                    current_player.total_score += 30
+                    current_player_score += 30
                     continue
                 elif roll_again == "Q":
                     break
