@@ -59,7 +59,7 @@ python main.py
 
 ## 📚Credits📚
 
-- This project uses Python's `curses` library for terminal-based UI.
+- This project uses Python's `windows-curses` library for terminal-based UI.
 
 ## 🔑License🔑
 
