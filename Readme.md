@@ -69,8 +69,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For inquiries or support, please contact.
 
-[ryad.hazin0002@stud.hkr.se](ryad.hazin0002@stud.hkr.se)
+[ryad.hazin0002@stud.hkr.se](mailto:ryad.hazin0002@stud.hkr.se)
 
-[mustafa.al-bayati0036@stud.hkr.se](mustafa.al-bayati0036@stud.hkr.se)
+[mustafa.al-bayati0036@stud.hkr.se](mailto:mustafa.al-bayati0036@stud.hkr.se)
 
-[zakaria.majkouma0013@stud.hkr.se](zakaria.majkouma0013@stud.hkr.se)
+[zakaria.majkouma0013@stud.hkr.se](mailto:zakaria.majkouma0013@stud.hkr.se)
