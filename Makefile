@@ -35,6 +35,9 @@ venv:
 
 install:
 	$(PYTHON) -m pip install -r requirements.txt
+ifdef windir
+    $(PYTHON) -m pip install windows-curses
+endif
 
 installed:
 	$(PYTHON) -m pip list
